@@ -1,4 +1,4 @@
-package chapter_6.exercise62;
+package chapter_6.exercise_62;
 
 
 
