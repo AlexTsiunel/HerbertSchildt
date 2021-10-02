@@ -18,10 +18,10 @@ public class ShowFile {
         // передается имя файла
         if (args.length != 1) {
             System.out.println("Иcnoльзoвaниe: ShowFile имя_файла");
-            return;
+            //return;
         }
         try {
-            fin = new FileInputStream(args[0]); // Открыть файл
+            fin = new FileInputStream(args[0]); // Открыть файл //args[0]
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
             return;
