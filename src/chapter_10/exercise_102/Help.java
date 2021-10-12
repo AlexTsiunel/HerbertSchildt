@@ -44,16 +44,15 @@ public class Help {
     }
 
     public String getSelection(){
-        String tppic = "";
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+        String topic = "";
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Введите название темы:");
-            tppic = br.readLine();
-
+        try {
+            topic = br.readLine();
         }catch (IOException e){
             System.out.println("Ошибка при чтении с консоли");
-
         }
-        return tppic;
+        return topic;
     }
 }
 
