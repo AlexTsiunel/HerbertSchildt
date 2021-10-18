@@ -3,29 +3,28 @@ package chapter_10.answersonquestions.question_8;
 import java.io.*;
 
 /*
-7. Напишите программу для копирования текстовых файлов. Видоизмените ее таким
-образом, чтобы все пробелы заменялись дефисами. Используйте при написании
-программы классы, представляющие байтовые потоки, а также традиционный
-способ закрытия файла явным вызовом метода close () .
-
+8. Перепишите программу, созданную в предыдущем пункте, таким образом, чтобы
+в ней использовались классы, представляющие символьные потоки. На этот раз
+воспользуйтесь оператором try с ресурсами для автоматического закрытия файла.
  */
 public class CopyTextFile {
     public static void main(String[] args) {
-        String stringFile;
+        int x;
+
         try (
-                BufferedReader reader = new BufferedReader(new FileReader("src/chapter_10/answersonquestions/question_8/text1.txt"));
-                BufferedWriter writer = new BufferedWriter(new FileWriter("src/chapter_10/answersonquestions/question_8/text2.txt"))) {
+                BufferedInputStream in = new BufferedInputStream(new FileInputStream("src/chapter_10/answersonquestions/question_8/text1.txt"));
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("src/chapter_10/answersonquestions/question_8/text2.txt"))
+        ) {
 
-            while ((stringFile = reader.readLine()) != null) {
-
-                String result = stringFile.replace(' ', '-');
-                writer.write(result);
-                writer.write("\n");
+            while ((x = in.read()) != -1) {
+                if ((char) x == ' ') {
+                    out.write((char) 45);
+                } else {
+                    out.write((char) x);
+                }
             }
-
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Ошибка ввода-вывода: " + e);
-
         }
     }
 }
